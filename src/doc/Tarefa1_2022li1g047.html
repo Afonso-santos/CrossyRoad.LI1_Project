@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Tarefa1_2022li1g047</title><link href="linuwial.css" rel="stylesheet" type="text/css" title="Linuwial" /><link rel="stylesheet" type="text/css" href="quick-jump.css" /><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700" /><script src="haddock-bundle.min.js" async="async" type="text/javascript"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { processClass: "mathjax", ignoreClass: ".*" } });</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script></head><body><div id="package-header"><span class="caption empty">&nbsp;</span><ul class="links" id="page-menu"><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul></div><div id="content"><div id="module-header"><table class="info"><tr><th valign="top">Copyright</th><td>Afonso Dion&#237;sio Santos &lt;a104276@alunos.uminho.pt&gt;<br />Luis Enrique Diaz de Freitas &lt;a104000@alunos.uminho.pt&gt;</td></tr><tr><th>Safe Haskell</th><td>Safe-Inferred</td></tr></table><p class="caption">Tarefa1_2022li1g047</p></div><div id="description"><p class="caption">Description</p><div class="doc"><p>M&#243;dulo para a realiza&#231;&#227;o da Tarefa 1 do projeto de LI1 em 2022/23.</p></div></div><div id="synopsis"><details id="syn"><summary>Synopsis</summary><ul class="details-toggle" data-details-id="syn"><li class="src short"><a href="#v:maxTroncos">maxTroncos</a> :: Integer</li><li class="src short"><a href="#v:maxCarros">maxCarros</a> :: Integer</li><li class="src short"><a href="#v:maxRios">maxRios</a> :: Int</li><li class="src short"><a href="#v:maxEstradas">maxEstradas</a> :: Int</li><li class="src short"><a href="#v:maxRelvas">maxRelvas</a> :: Int</li><li class="src short"><a href="#v:tipoTerreno">tipoTerreno</a> :: <a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a> -&gt; String</li><li class="src short"><a href="#v:terrenoDir">terrenoDir</a> :: <a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a> -&gt; Int</li><li class="src short"><a href="#v:terrenoValido">terrenoValido</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; Bool</li><li class="src short"><a href="#v:obstaculosValidos">obstaculosValidos</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; Bool</li><li class="src short"><a href="#v:listObts">listObts</a> :: [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; Bool</li><li class="src short"><a href="#v:listObts2">listObts2</a> :: [[<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]] -&gt; Bool</li><li class="src short"><a href="#v:checkO">checkO</a> :: [[<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]] -&gt; Bool</li><li class="src short"><a href="#v:tamanhoCheck">tamanhoCheck</a> :: [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; Bool</li><li class="src short"><a href="#v:riosOpostos">riosOpostos</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; Bool</li><li class="src short"><a href="#v:nenhumValidos">nenhumValidos</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; Bool</li><li class="src short"><a href="#v:linhaValidas">linhaValidas</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; Bool</li><li class="src short"><a href="#v:listLinha">listLinha</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, a)] -&gt; [(String, Int)]</li><li class="src short"><a href="#v:mapaValido">mapaValido</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; Bool</li></ul></details></div><div id="interface"><h1>Documentation</h1><div class="top"><p class="src"><a id="v:maxTroncos" class="def">maxTroncos</a> :: Integer <a href="#v:maxTroncos" class="selflink">#</a></p><div class="doc"><ul><li>-A fun&#231;&#227;o mapaValido,constituido por fun&#231;&#245;es auxiliares ,que verifica  se o mapa corresponde as seguintes condicionantes:</li><li>-1. N&#227;o existem obst&#225;culos em terrenos impr&#243;prios, exemplo: troncos em estradas ou relvas, &#225;rvores em rios ou estradas, etc.(terrenoValido),</li><li>-2. Se dois rios s&#227;o seguidos t&#234;m direcec&#245;es opostas.(riosOpostos),</li><li>-3. Carros e troncos n&#227;o podem ultrupassar um certo comprimento, 3 unidades e 5 unidades , respetivamente.(obstaculosValidos),</li><li>-4. Ou seja, uma linha n&#227;o pode ser composta exclusivamente por obst&#225;culos, precisando de haver pelo menos um espa&#231;o livre.(nenhumValidos),</li><li>-5. O comprimento da lista de obst&#225;culos de cada linha corresponde exatamente a largura do mapa.(linhasValidas),</li><li>-6. Contiguamente, n&#227;o devem existir mais do que 4 rios, nem 5 estradas ou relvas.s</li></ul><pre>mapaValido :: Mapa -&gt; Bool
+mapaValido (Mapa _ []) = True
+mapaValido (Mapa l t)
+    | terrenoValido t == False = False
+    | riosOpostos t == False = False
+    | obstaculosValidos t == False = False
+    | nenhumValidos t == False = False
+    | linhaValidas (Mapa l t) == False = False
+    | 0 &lt; sum[1 | (<a href="Rio.html">Rio</a>, x) &lt;-list,maxRios &lt; x] = False
+    | 0 &lt; sum[1 | (<a href="Estrada.html">Estrada</a>, x) &lt;-list,maxEstrada &lt; x] = False
+    | 0 &lt; sum[1 | (<a href="Relva.html">Relva</a>, x) &lt;-list,maxRelva &lt; x] = False
+    | otherwise = True 
+    where
+        list = listLinha t
+
+
+</pre><h2>Exemplos</h2><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>mapaValido 5 [(Relva,[Arvore,Arvore,Nenhum,Nenhum,Arvore]),
+</code></strong>                (Estrada 2,[Carro,Carro,Nenhum,Nenhum,Carro]),
+                (Rio 2,[Nenhum,Nenhum,Tronco,Tronco, Nenhum]),
+                (Rio (-2),[Nenhum,Tronco,Tronco,Nenhum,Nenhum])]
+True
+</pre><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>mapaValido 5[(Rio (-2),[Nenhum,Tronco,Tronco,Nenhum,Nenhum]),
+</code></strong>                (Relva,[Arvore,Arvore,Nenhum,Nenhum,Arvore]),
+                (Estrada 2,[Carro,Carro,Nenhum,Nenhum,Carro]),
+                (Rio 2,[Nenhum,Nenhum,Tronco,Tronco, Nenhum]),
+                (Relva ,[Nenhum,Arvore,Arvore,Nenhum,Nenhum])]
+True
+</pre><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>mapaValido 4 [(Relva,[Arvore,Arvore,Nenhum,Nenhum,Arvore]),
+</code></strong>                (Estrada 2,[Carro,Carro,Nenhum,Nenhum,Carro]),
+                (Rio 2,[Nenhum,Nenhum,Tronco,Tronco, Nenhum]),
+                (Rio (-2),[Nenhum,Tronco,Tronco,Nenhum,Nenhum])] 
+False
+</pre><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>mapaValido 5 [(Relva,[Arvore,Arvore,Nenhum,Nenhum,Arvore]),
+</code></strong>                (Estrada 2,[Carro,Carro,Carro,Nenhum,Carro]),
+                (Rio 2,[Nenhum,Nenhum,Tronco,Tronco, Nenhum]),
+                (Rio 2,[Nenhum,Tronco,Tronco,Nenhum,Nenhum])]
+False 
+</pre><ol><li>terrenoValido ,fun&#231;&#227;o auxiliar, &#233; a fun&#231;&#227;o que verifica se os obst&#225;culos no terrenos respetivos,
+(Carros nas estradas,Arvore na relva ,troncos no rio)</li></ol><pre>terrenoValido :: [(Terreno, [Obstaculo])] -&gt; Bool
+terrenoValido [] = True
+terrenoValido ((t, o):ts)
+    | tipoTerreno t == <a href="Rio.html">Rio</a>     &amp;&amp; 0 &lt; sum[1 | Carro &lt;-o]  + sum[1 | Arvore &lt;-o] = False
+    | tipoTerreno t == <a href="Estrada.html">Estrada</a> &amp;&amp; 0 &lt; sum[1 | Tronco &lt;-o] + sum[1 | Arvore &lt;-o] = False
+    | tipoTerreno t == <a href="Relva.html">Relva</a>   &amp;&amp; 0 &lt; sum[1 | Carro &lt;-o]  + sum[1 | Tronco &lt;-o] = False
+    | otherwise = terrenoValido ts
+
+
+</pre><h2>Exemplos</h2><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>terrenoValido [(Relva,[Arvore,Arvore,Nenhum,Nenhum,Arvore]),
+</code></strong>                (Estrada 2,[Carro,Carro,Nenhum,Nenhum,Carro]),
+                (Rio 2,[Nenhum,Nenhum,Tronco,Tronco, Nenhum]),
+                (Rio (-2),[Nenhum,Tronco,Tronco,Nenhum,Nenhum])]
+True
+</pre><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>terrenoValido [(Relva,[Arvore,Arvore,Nenhum,Nenhum,Arvore]),
+</code></strong>                (Estrada 2,[Carro,Carro,Nenhum,Nenhum,Carro]),
+                (Rio 2,[Carro,Nenhum,Tronco,Tronco, Nenhum]),
+                (Rio (-2),[Nenhum,Tronco,Tronco,Nenhum,Nenhum])]
+False
+</pre><ol><li>riosOpostos verifica se os rios consecutivos se tem dire&#231;&#245;es oposto, ou seja se a veocidade for positiva ,desloca se da esquerda para a direita,o pr&#243;ximo obrigatoriamente negativo, desloca-se da direito para a esquerda.</li></ol><pre>
+riosOpostos :: [(Terreno, [Obstaculo])] -&gt; Bool
+riosOpostos [] = True
+riosOpostos ((t, o):ts)
+    | 0 <a href="length">ts &amp;&amp; tipoTerreno t == &quot;Rio&quot; &amp;&amp; tipoTerreno (fst (head ts)) == &quot;Rio&quot; &amp;&amp; (terrenoDir t)*(terrenoDir (fst (head ts)))</a> 0 = False 
+    | otherwise = riosOpostos ts
+
+</pre><ol><li>obstaculosValidos analisa os obst&#225;culos de cada terreno, neste caso os carros e os troncos.Se respeitam o tamanho suposto .</li></ol><pre>obstaculosValidos :: [(Terreno, [Obstaculo])] -&gt; Bool
+obstaculosValidos [] = True
+obstaculosValidos ((t, o):ts)
+    | tipoTerreno t == <a href="Rio.html">Rio</a> &amp;&amp; (listObts o) = False
+    | tipoTerreno t == <a href="Estrada.html">Estrada</a> &amp;&amp; (listObts o)= False
+    | tipoTerreno t ==<a href="Relva.html">Relva</a> = True
+    | otherwise = obstaculosValidos ts
+</pre><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>obstaculosValidos [(Estrada 2,[Carro,Carro,Nenhum,Nenhum,Carro])
+</code></strong>                     (Rio 2,[Nenhum,Nenhum,Tronco,Tronco, Nenhum]),
+                     (Estrada 2,[Carro,Carro,Nenhum,Nenhum,Carro]),
+                     (Rio 2,[Nenhum,Nenhum,Tronco,Tronco, Nenhum])] 
+True
+</pre><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>obstaculosValidos [(Rio (-2),[Tronco,Tronco,Tronco,Tronco,Tronco])
+</code></strong>                     (Relva,[Arvore,Arvore,Nenhum,Nenhum,Arvore]),
+                     (Estrada 2,[Carro,Carro,Nenhum,Carro,Carro]),
+                     (Rio 2,[Nenhum,Nenhum,Tronco,Tronco, Nenhum])]
+False 
+</pre><ol><li>1 A fun&#231;&#227;o  obstaculosValidos &#233; constituida por 4 auxiliares.As auxiliares descrevem por si mesmo</li></ol><pre>listObts :: [Obstaculo]-&gt;Bool
+listObts []=True
+listObts l= listObts2 (group l) &amp;&amp; checkO  (group l)
+</pre><pre>listObts2::[[Obstaculo]]-&gt;Bool
+listObts2 []= True
+listObts2 (h:t)
+  |(head h==Tronco &amp;&amp; length h &gt;5 )||(head h ==Carro &amp;&amp; (length h) &gt;3) =False
+  |head h == Arvore || head h == Nenhum = True
+  |otherwise = listObts2 t
+</pre><pre>checkO::[[Obstaculo]]-&gt;Bool
+checkO (h:t)
+  |head h ==last (last t) &amp;&amp; (tamanhoCheck (h) (last t))==False  =False
+  |otherwise= True 
+
+tamanhoCheck::[Obstaculo]-&gt;[Obstaculo]-&gt;Bool
+tamanhoCheck ( Tronco :t) l2 
+  | (length (Tronco:t)) +(length l2)&gt;5 =False 
+  | otherwise = True 
+tamanhoCheck (Carro:t) l2 
+  |(length (Carro:t))+ (length l2)&gt;3   =False
+  |otherwise =True 
+
+
+</pre><ol><li>A fun&#231;ao nenhumValidos verifica se h&#225; pelo menos um obstaculo &#171;Nenhum&#187;</li></ol><pre>nenhumValidos:: [(Terreno, [Obstaculo])] -&gt; Bool
+nenhumValidos [] = True
+nenhumValidos ((t, o):ts)
+    | sum[1 | Nenhum &lt;-o] == 0 = False
+    | otherwise = nenhumValidos ts
+
+</pre><ol><li>As linhasValidas, o nome da fun&#231;ao &#233; auto explicativo. Verifica se a largura do mapa corresponde ao tamanho da lista de objetos</li></ol><pre>linhaValidas :: Mapa -&gt; Bool
+linhaValidas (Mapa l []) = True
+linhaValidas (Mapa l ((t, o):ts))
+    | l /= length o = False
+    | otherwise = linhaValidas (Mapa l ts)
+</pre><ol><li>A fun&#231;ao listLinha , conta quantos terrenos continuos h&#225; , que depois na fun&#231;&#227;o mapa valido verifica se o numero &#233; valido .</li></ol><pre>listLinha :: [(Terreno, a)] -&gt; [(String, Int)]
+listLinha [] = []
+listLinha ((Rio _, _):ts)
+    | length (ts) &gt; 0 &amp;&amp; fst (head l) == <a href="Rio.html">Rio</a> = (<a href="Rio.html">Rio</a>, snd (head l) + 1):(tail l)
+    | otherwise = (<a href="Rio.html">Rio</a>, 1):l
+    where
+        l = listLinha ts
+listLinha ((Estrada _, _):ts)
+    | length (ts) &gt; 0 &amp;&amp; fst (head l) == <a href="Estrada.html">Estrada</a> = (<a href="Estrada.html">Estrada</a>, snd (head l) + 1):(tail l)
+    | otherwise = (<a href="Estrada.html">Estrada</a>, 1):l
+    where
+        l = listLinha ts
+listLinha ((Relva, _):ts)
+    | length (ts) &gt; 0 &amp;&amp; fst (head l) == <a href="Relva.html">Relva</a> = (<a href="Relva.html">Relva</a>, snd (head l) + 1):(tail l)
+    | otherwise = (<a href="Relva.html">Relva</a>, 1):l
+    where
+        l = listLinha ts
+</pre></div></div><div class="top"><p class="src"><a id="v:maxCarros" class="def">maxCarros</a> :: Integer <a href="#v:maxCarros" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:maxRios" class="def">maxRios</a> :: Int <a href="#v:maxRios" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:maxEstradas" class="def">maxEstradas</a> :: Int <a href="#v:maxEstradas" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:maxRelvas" class="def">maxRelvas</a> :: Int <a href="#v:maxRelvas" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:tipoTerreno" class="def">tipoTerreno</a> :: <a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a> -&gt; String <a href="#v:tipoTerreno" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:terrenoDir" class="def">terrenoDir</a> :: <a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a> -&gt; Int <a href="#v:terrenoDir" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:terrenoValido" class="def">terrenoValido</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; Bool <a href="#v:terrenoValido" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:obstaculosValidos" class="def">obstaculosValidos</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; Bool <a href="#v:obstaculosValidos" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:listObts" class="def">listObts</a> :: [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; Bool <a href="#v:listObts" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:listObts2" class="def">listObts2</a> :: [[<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]] -&gt; Bool <a href="#v:listObts2" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:checkO" class="def">checkO</a> :: [[<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]] -&gt; Bool <a href="#v:checkO" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:tamanhoCheck" class="def">tamanhoCheck</a> :: [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; Bool <a href="#v:tamanhoCheck" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:riosOpostos" class="def">riosOpostos</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; Bool <a href="#v:riosOpostos" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:nenhumValidos" class="def">nenhumValidos</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; Bool <a href="#v:nenhumValidos" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:linhaValidas" class="def">linhaValidas</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; Bool <a href="#v:linhaValidas" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:listLinha" class="def">listLinha</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, a)] -&gt; [(String, Int)] <a href="#v:listLinha" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:mapaValido" class="def">mapaValido</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; Bool <a href="#v:mapaValido" class="selflink">#</a></p></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.26.0</p></div></body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Tarefa2_2022li1g047</title><link href="linuwial.css" rel="stylesheet" type="text/css" title="Linuwial" /><link rel="stylesheet" type="text/css" href="quick-jump.css" /><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700" /><script src="haddock-bundle.min.js" async="async" type="text/javascript"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { processClass: "mathjax", ignoreClass: ".*" } });</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script></head><body><div id="package-header"><span class="caption empty">&nbsp;</span><ul class="links" id="page-menu"><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul></div><div id="content"><div id="module-header"><table class="info"><tr><th valign="top">Copyright</th><td>Afonso Dion&#237;sio Santos &lt;a104276@alunos.uminho.pt&gt;<br />Luis Enrique Diaz de Freitas &lt;a104000@alunos.uminho.pt&gt;</td></tr><tr><th>Safe Haskell</th><td>Safe-Inferred</td></tr></table><p class="caption">Tarefa2_2022li1g047</p></div><div id="description"><p class="caption">Description</p><div class="doc"><p>M&#243;dulo para a realiza&#231;&#227;o da Tarefa 2 do projeto de LI1 em 2022/23.</p></div></div><div id="synopsis"><details id="syn"><summary>Synopsis</summary><ul class="details-toggle" data-details-id="syn"><li class="src short"><a href="#v:estendeMapa">estendeMapa</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; Int -&gt; <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a></li><li class="src short"><a href="#v:randomList">randomList</a> :: Random a =&gt; Int -&gt; [a]</li><li class="src short"><a href="#v:randomInt">randomInt</a> :: Int -&gt; Int -&gt; Int</li><li class="src short"><a href="#v:estendeLinha">estendeLinha</a> :: Int -&gt; <a href="LI12223.html#t:Velocidade" title="LI12223">Velocidade</a> -&gt; (<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]) -&gt; (<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])</li><li class="src short"><a href="#v:proximosTerrenosValidos">proximosTerrenosValidos</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; [<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>]</li><li class="src short"><a href="#v:proximosObstaculosValidos">proximosObstaculosValidos</a> :: Int -&gt; (<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]) -&gt; [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]</li><li class="src short"><a href="#v:liObts">liObts</a> :: [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; Bool</li><li class="src short"><a href="#v:groupa">groupa</a> :: Eq a =&gt; [a] -&gt; [[a]]</li><li class="src short"><a href="#v:tamanhoObts">tamanhoObts</a> :: [[<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]] -&gt; Bool</li></ul></details></div><div id="interface"><h1>Documentation</h1><div class="top"><p class="src"><a id="v:estendeMapa" class="def">estendeMapa</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; Int -&gt; <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> <a href="#v:estendeMapa" class="selflink">#</a></p><div class="doc"><ol><li>A fun&#231;&#227;o estendeMapa, definida por fun&#231;&#245;es auxiliares, que ir&#225; defenir aleatoriamente o terreno da nova linhas. A mesma adiciona uma velocidades aos devidos terrenos.A fun&#231;&#227;o estendeMapa s&#243; &#233; possivel devido &#224; fun&#231;&#227;o estendeLinha que nesta fun&#231;&#227;o ir&#225; defenir a lista de obst&#225;culos aleat&#243;ria.</li></ol><pre>estendeMapa :: Mapa -&gt; Int -&gt; Mapa
+estendeMapa (Mapa l ((terreno,o):t)) n = Mapa l ((estendeLinha l speed ( newTerreno ,[]) ):(terreno,o):t) 
+  where listaTerreno= proximosTerrenosValidos (Mapa l ((terreno,o):t))
+        newTerreno= listaTerreno !! randomInt (length listaTerreno) n
+        speed = case terreno of 
+          Rio v -&gt;  v*(-1)
+          Estrada v -&gt; (randomInt n 40 )
+          Relva -&gt; (randomInt n 33 )
+</pre><h2>Exemplo </h2><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>estendeMapa (Mapa 5 [(Rio 1,[Tronco,Tronco,Nenhum,Nenhum,Tronco]),
+</code></strong>                        (Relva, [Nenhum,Arvore,Nenhum,Nenhum,Nenhum])]) 12
+</pre><p>Mapa 5 [(Estrada (-1),[Nenhum,Nenhum,Carro,Carro,Carro]),
+                      (Rio 1,[Tronco,Tronco,Nenhum,Nenhum,Tronco]),
+                      (Relva,[Nenhum,Arvore,Nenhum,Nenhum,Nenhum])]                  </p><ol><li>A fun&#231;&#227;o &quot;proximosTerrenosValidos&quot; e &quot;prosimosObstaculosValidos&quot; s&#227;o fun&#231;&#245;es na qual indicam o quais s&#227;o os casos possiveis dependendo da situa&#231;&#227;o.</li></ol><pre>proximosTerrenosValidos :: Mapa -&gt; [Terreno]
+proximosTerrenosValidos (Mapa _ [])= [Rio 0 ,Estrada 0 ,Relva]
+proximosTerrenosValidos (Mapa _ (h:(Rio _,_):(Rio _,_):(Rio _,_):(Rio _,_):t))= [Estrada 0,Relva]
+proximosTerrenosValidos (Mapa _(h:(Estrada _,_):(Estrada _,_):(Estrada _,_):(Estrada _,_):(Estrada _,_):t)) =[ Relva,Rio 0]
+proximosTerrenosValidos (Mapa _(h:(Relva,_):(Relva,_):(Relva,_):(Relva,_):(Relva,_):t))= [Rio 0,Estrada 0]
+proximosTerrenosValidos (Mapa _ (h:t))=[Rio 0, Relva, Estrada 0]
+</pre><pre>proximosObstaculosValidos :: Int -&gt; (Terreno, [Obstaculo]) -&gt; [Obstaculo]
+proximosObstaculosValidos x (Relva,[])= [Nenhum,Arvore]
+proximosObstaculosValidos x (Estrada _,[])= [Nenhum,Carro]
+proximosObstaculosValidos x (Rio _ , [])= [Nenhum , Tronco] 
+proximosObstaculosValidos x (Rio _ , o)
+  |x == length o = []
+  |(x - length o ) == 1 &amp;&amp; elem Nenhum o &amp;&amp; liObts o==False  =[Nenhum]
+  |(x - length o ) == 1 &amp;&amp; elem Nenhum o == False &amp;&amp; liObts o ==True = [Tronco]
+  |(x-length o) &gt; 1 &amp;&amp; elem Nenhum o   &amp;&amp; liObts o == True = [ Tronco, Nenhum]
+  |(x-length o) &gt; 1 &amp;&amp; elem Nenhum o   &amp;&amp; liObts o == False = [Nenhum]
+  |(x-length o) &gt;=1 &amp;&amp; elem Nenhum o &amp;&amp; liObts o  ==True = [Nenhum, Tronco]
+  |(x-length o) &gt;=1 &amp;&amp; elem Nenhum o &amp;&amp; liObts o == False =[Nenhum]
+  |otherwise = [Nenhum]
+proximosObstaculosValidos x (Estrada _ , o)
+  |x == length o = []
+  |(x - length o ) == 1 &amp;&amp; elem Nenhum o &amp;&amp; liObts (o)==False  =[Nenhum]
+  |(x-length o) &gt; 1 &amp;&amp; elem Nenhum o == False  &amp;&amp; liObts o == True = [Nenhum, Carro]
+  |(x-length o) &gt; 1 &amp;&amp; elem Nenhum o == False  &amp;&amp; liObts o == False = [Nenhum]
+  |(x-length o) &gt;=1 &amp;&amp; elem Nenhum o &amp;&amp; liObts o  ==True = [Carro, Nenhum]
+  |(x-length o) &gt;=1 &amp;&amp; elem Nenhum o &amp;&amp; liObts o == False = [Nenhum]
+  |otherwise = [Nenhum]
+proximosObstaculosValidos x (Relva, o)
+  |x == length o = []
+  |(x - length o ) == 1 &amp;&amp; elem Nenhum o  =[Nenhum]
+  |(x-length o) &gt; 1 &amp;&amp; elem Nenhum o == False  = [Nenhum,Arvore]
+  |(x-length o) &gt;=1 &amp;&amp; elem Nenhum o  = [Nenhum,Arvore]
+  |otherwise = [Nenhum]
+</pre><ol><li>A raz&#227;o para aleatoridade das fun&#231;&#245;es referidas anteriormente s&#227;o:</li></ol><pre>randomList :: (Random a) =&gt; Int --^ Um inteiro que ser&#225; a seed das cri&#231;&#245;es dos &quot;randoms&quot; 
+          -&gt; [a]  --^A lista de inteiros dos &quot;randoms&quot; 
+randomList seed = randoms (mkStdGen seed)
+
+randomInt:: Int-&gt;Int-&gt;Int
+randomInt  y x = mod ((randomList x)!! x) y
+</pre></div></div><div class="top"><p class="src"><a id="v:randomList" class="def">randomList</a> :: Random a =&gt; Int -&gt; [a] <a href="#v:randomList" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:randomInt" class="def">randomInt</a> :: Int -&gt; Int -&gt; Int <a href="#v:randomInt" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:estendeLinha" class="def">estendeLinha</a> :: Int -&gt; <a href="LI12223.html#t:Velocidade" title="LI12223">Velocidade</a> -&gt; (<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]) -&gt; (<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]) <a href="#v:estendeLinha" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:proximosTerrenosValidos" class="def">proximosTerrenosValidos</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; [<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>] <a href="#v:proximosTerrenosValidos" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:proximosObstaculosValidos" class="def">proximosObstaculosValidos</a> :: Int -&gt; (<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]) -&gt; [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] <a href="#v:proximosObstaculosValidos" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:liObts" class="def">liObts</a> :: [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; Bool <a href="#v:liObts" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:groupa" class="def">groupa</a> :: Eq a =&gt; [a] -&gt; [[a]] <a href="#v:groupa" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:tamanhoObts" class="def">tamanhoObts</a> :: [[<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]] -&gt; Bool <a href="#v:tamanhoObts" class="selflink">#</a></p></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.26.0</p></div></body></html>

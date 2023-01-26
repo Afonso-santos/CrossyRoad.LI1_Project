@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Tarefa3_2022li1g047</title><link href="linuwial.css" rel="stylesheet" type="text/css" title="Linuwial" /><link rel="stylesheet" type="text/css" href="quick-jump.css" /><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700" /><script src="haddock-bundle.min.js" async="async" type="text/javascript"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { processClass: "mathjax", ignoreClass: ".*" } });</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script></head><body><div id="package-header"><span class="caption empty">&nbsp;</span><ul class="links" id="page-menu"><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul></div><div id="content"><div id="module-header"><table class="info"><tr><th valign="top">Copyright</th><td>Afonso Dion&#237;sio Santos &lt;a104276@alunos.uminho.pt&gt;<br />Luis Enrique Diaz de Freitas &lt;a104000@alunos.uminho.pt&gt;</td></tr><tr><th>Safe Haskell</th><td>Safe-Inferred</td></tr></table><p class="caption">Tarefa3_2022li1g047</p></div><div id="description"><p class="caption">Description</p><div class="doc"><p>M&#243;dulo para a realiza&#231;&#227;o da Tarefa 3 do projeto de LI1 em 2022/23.</p></div></div><div id="synopsis"><details id="syn"><summary>Synopsis</summary><ul class="details-toggle" data-details-id="syn"><li class="src short"><a href="#v:movimento">movimento</a> :: Int -&gt; [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>]</li><li class="src short"><a href="#v:movimentoTerreno">movimentoTerreno</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])]</li><li class="src short"><a href="#v:novoMapa">novoMapa</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a></li><li class="src short"><a href="#v:coordenadas">coordenadas</a> :: <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a> -&gt; <a href="LI12223.html#t:Coordenadas" title="LI12223">Coordenadas</a></li><li class="src short"><a href="#v:novaPosicao">novaPosicao</a> :: <a href="LI12223.html#t:Jogada" title="LI12223">Jogada</a> -&gt; <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; <a href="LI12223.html#t:Coordenadas" title="LI12223">Coordenadas</a> -&gt; <a href="LI12223.html#t:Coordenadas" title="LI12223">Coordenadas</a></li><li class="src short"><a href="#v:posicaoJogador">posicaoJogador</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; <a href="LI12223.html#t:Jogada" title="LI12223">Jogada</a> -&gt; <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a> -&gt; <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a></li><li class="src short"><a href="#v:ajustarJogador">ajustarJogador</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a> -&gt; <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a></li><li class="src short"><a href="#v:animaJogo">animaJogo</a> :: <a href="LI12223.html#t:Jogo" title="LI12223">Jogo</a> -&gt; <a href="LI12223.html#t:Jogada" title="LI12223">Jogada</a> -&gt; <a href="LI12223.html#t:Jogo" title="LI12223">Jogo</a></li></ul></details></div><div id="interface"><h1>Documentation</h1><div class="top"><p class="src"><a id="v:movimento" class="def">movimento</a> :: Int -&gt; [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] -&gt; [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>] <a href="#v:movimento" class="selflink">#</a></p><div class="doc"><p>A fun&#231;ao animaJogo que movimenta os obst&#225;culos (de acordo com a velocidade) do terreno em que se encontram), e o personagem, de acordo com a jogada dada.
+Para a anima&#231;&#227;o do jogo &#233; neces&#225;rio animar diversas coisas como por exemplo:
+ * Movimento do jogador 
+ * Movimenta&#231;&#227;o dos obst&#225;culos
+ * Movimento dos Jogador em cima de obst&#225;culos</p><pre>
+animaJogo :: Jogo -&gt; Jogada -&gt; Jogo
+animaJogo (Jogo actJogador (Mapa l tos)) novaJogada =
+    let auxJogador = posicaoJogador (Mapa l tos) novaJogada actJogador
+        novoJogador = ajustarJogador (Mapa l tos) (auxJogador)
+        novomapa = novoMapa (Mapa l tos)
+    in Jogo novoJogador novomapa
+
+</pre><h2>Exemplo</h2><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>animaJogo (Jogo (Jogador (0,1)) (Mapa 3 [(Rio 1,[Nenhum,Tronco,Nenhum]),
+</code></strong>                                        (Estrada 1,[Carro,Carro,Nenhum]),
+                                        (Relva,[Arvore,Nenhum,Nenhum])])) Parado
+</pre><p>Jogo (Jogador (0,1)) (Mapa 3 [(Rio 1,[Nenhum,Tronco,Nenhum]),
+                              (Estrada 1, [Nenhum,Carro,Carro])
+                              (Relva, [Arvore,Nenhum,Nenhum])])</p><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>animaJogo (Jogo (Jogador (2,2)) (Mapa 3 [(Rio 1,[Nenhum,Tronco,Nenhum]),
+</code></strong>                                            (Estrada 1,[Carro,Nenhum,Nenhum]),
+                                            (Relva,[Arvore,Nenhum,Nenhum])])) (Move Cima)
+</pre><p>Jogo (Jogador (2,1)) (Mapa 3 [(Rio 1,[Nenhum,Tronco,Nenhum]),
+                                     (Estrada 1,[Carro,Nenhum,Nenhum]),
+                                     (Relva,[Arvore,Nenhum,Nenhum])])</p><pre class="screen"><code class="prompt">&gt;&gt;&gt; </code><strong class="userinput"><code>animaJogo (Jogo(Jogador (2,2,)) (Mapa 3 [(Rio 1 ,[Nenhum, Tronco,Nenhum]),
+</code></strong>                                          (Relva, [Arvore ,Nenhum,Arvore]),
+                                          (Relva, [Arvore , Nenhum, Nenhum])])) (Move Cima)
+</pre><p>Jogo ( Jogador (2,2)) (Mapa 3 [(Rio 1 ,[Nenhum, Tronco,Nenhum]),
+                               (Relva, [Arvore ,Nenhum,Arvore]),
+                               (Relva, [Arvore , Nenhum, Nenhum])])</p><p>Fun&#231;&#245;es que promovem a habilidade de movimenta&#231;&#227;o do jogador para as 4 dire&#231;&#245;es :Cima,Baixo,Direita e Esquerda. A mesma bloqueia a passagem do jogador atravez de &#225;rvores. </p><pre>posicaoJogador :: Mapa -&gt; Jogada -&gt; Jogador -&gt; Jogador
+posicaoJogador (Mapa l ((t,o):ts)) d j = Jogador (novaPosicao d (novoMapa (Mapa l ((t,o):ts))) (coordenadas j))
+
+coordenadas :: Jogador -&gt; Coordenadas
+coordenadas (Jogador (x,y)) = (x,y)
+
+
+novaPosicao :: Jogada -&gt; Mapa -&gt; Coordenadas -&gt; Coordenadas  
+novaPosicao Parado _ (x, y) = (x, y)
+novaPosicao (Move Cima) (Mapa _ tos) (x, y)
+    | y == 0 = (x,y)
+    | (snd(tos !! (y - 1))) !! x == Arvore = (x,y)
+    | otherwise = (x, y - 1)
+novaPosicao (Move Direita) (Mapa l tos) (x, y)
+    | x == l - 1 = (x, y)
+    | (snd(tos !! y)) !! (x + 1) == Arvore = (x, y)
+    | otherwise = (x + 1, y)
+novaPosicao (Move Baixo) (Mapa _ tos) (x, y)
+    | y == length tos - 1 = (x, y)
+    | (snd(tos !! (y + 1))) !! x == Arvore = (x, y)
+    | otherwise = (x, y + 1)
+novaPosicao (Move Esquerda) (Mapa _ tos) (x, y)
+    | x == 0 = (x, y)
+    | (snd(tos !! y)) !! (x - 1) == Arvore = (x, y)
+    | otherwise = (x - 1, y)
+</pre><p>Ao longo do mapa h&#225; movimenta&#231;&#245;es de obst&#225;culos, carros e troncos. Se a veocidade for positiva ,desloca se da esquerda para a direito e se for negativo, desloca-se da direita para esquerda. </p><pre>novoMapa :: Mapa -&gt; Mapa
+novoMapa (Mapa l ((t,o):ts)) = Mapa l (movimentoTerreno ((t,o):ts))
+
+movimento :: Int -&gt; [Obstaculo] -&gt; [Obstaculo] 
+  | v &gt; 0 = movimento (v-1) ([last t] ++ (take (length (o:t) - 1) (o:t)))
+  | v &lt; 0 = movimento (v+1) (t ++ [o])
+  | otherwise = (o:t)
+
+movimentoTerreno :: [(Terreno,[Obstaculo])] -&gt; [(Terreno,[Obstaculo])]
+movimentoTerreno [] = []
+movimentoTerreno ((t,o):ts)
+  | tipoTerreno t == <a href="Relva.html">Relva</a> = (t,o):movimentoTerreno ts
+  | (tipoTerreno t == <a href="Estrada.html">Estrada</a> || tipoTerreno t == <a href="Rio.html">Rio</a>) = (t,(movimento (terrenoDir t) o)):(movimentoTerreno ts)
+
+</pre><p>O jogador consegue se movimentar em cima do tronco. Mas o tronco tambem tem a sua movimenta&#231;&#227;o. Por isso temos de ter esse cuidaed.</p><pre>ajustarJogador :: Mapa -&gt; Jogador -&gt; Jogador
+ajustarJogador (Mapa l tos) (Jogador (x,y))
+  | (snd(tos !! y)) !! x /= Tronco = Jogador (x, y)
+  | x + v &lt; 0 = Jogador (0,y)
+  | l - 1 &lt; x + v = Jogador (l - 1, y)
+  | otherwise = Jogador (x + v, y)
+  where v = terrenoDir (fst (tos !! y))
+</pre></div></div><div class="top"><p class="src"><a id="v:movimentoTerreno" class="def">movimentoTerreno</a> :: [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] -&gt; [(<a href="LI12223.html#t:Terreno" title="LI12223">Terreno</a>, [<a href="LI12223.html#t:Obstaculo" title="LI12223">Obstaculo</a>])] <a href="#v:movimentoTerreno" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:novoMapa" class="def">novoMapa</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> <a href="#v:novoMapa" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:coordenadas" class="def">coordenadas</a> :: <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a> -&gt; <a href="LI12223.html#t:Coordenadas" title="LI12223">Coordenadas</a> <a href="#v:coordenadas" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:novaPosicao" class="def">novaPosicao</a> :: <a href="LI12223.html#t:Jogada" title="LI12223">Jogada</a> -&gt; <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; <a href="LI12223.html#t:Coordenadas" title="LI12223">Coordenadas</a> -&gt; <a href="LI12223.html#t:Coordenadas" title="LI12223">Coordenadas</a> <a href="#v:novaPosicao" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:posicaoJogador" class="def">posicaoJogador</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; <a href="LI12223.html#t:Jogada" title="LI12223">Jogada</a> -&gt; <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a> -&gt; <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a> <a href="#v:posicaoJogador" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:ajustarJogador" class="def">ajustarJogador</a> :: <a href="LI12223.html#t:Mapa" title="LI12223">Mapa</a> -&gt; <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a> -&gt; <a href="LI12223.html#t:Jogador" title="LI12223">Jogador</a> <a href="#v:ajustarJogador" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:animaJogo" class="def">animaJogo</a> :: <a href="LI12223.html#t:Jogo" title="LI12223">Jogo</a> -&gt; <a href="LI12223.html#t:Jogada" title="LI12223">Jogada</a> -&gt; <a href="LI12223.html#t:Jogo" title="LI12223">Jogo</a> <a href="#v:animaJogo" class="selflink">#</a></p></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.26.0</p></div></body></html>
